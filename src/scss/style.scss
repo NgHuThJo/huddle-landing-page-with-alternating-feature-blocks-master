@@ -1,0 +1,102 @@
+@use "./abstracts/" as *;
+@use "./base/" as *;
+@use "./components/" as *;
+@use "./layout/" as *;
+@use "./utilities/" as *;
+
+// General rules
+body {
+    text-align: center;
+
+    > * {
+        @include grid;
+
+        grid-template-columns: subgrid;
+        grid-column: full-width;
+    }
+}
+
+.h2 {
+    &--header {
+        font: {
+            size: var(--fs-header-heading);
+        }
+    }
+}
+
+.header,
+.main,
+.footer {
+    > * {
+        grid-column: breakout;
+    }
+}
+
+.header {
+    --spacing: 1.25rem;
+
+    padding-block: var(--spacing) 2rem;
+    background-color: hsl(var(--bgc-header));
+    background-image: url("../../images/bg-hero-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &--text {
+        font: {
+            size: var(--fs-header-text);
+        }
+    }
+    
+    // > * {
+    //     grid-column: breakout;
+    // }
+
+    @include min-query("s") {
+        background-image: url("../../images/bg-hero-desktop.svg");
+    }
+}
+
+.main {
+
+}
+
+// Specific rules
+.hero {
+    @include grid;
+
+    gap: 3rem;
+    padding-top: 5.25rem;
+    padding-inline: var(--spacing);
+}
+
+.logo {
+    &--header {
+        width: 6.5rem;
+    }
+
+    &--footer {
+        // placeholder
+    }
+}
+
+.cta {
+    --_c-cta: var(--c-cta);
+    --_bgc-cta: var(--bgc-cta);
+
+    padding: 0.75rem 3.75rem;
+    font: {
+        size: 0.75rem;
+    }
+    color: hsl(var(--_c-cta));
+    background-color: hsl(var(--_bgc-cta));
+
+    &--header {
+        --c-cta: var(--c-heading);
+        --bgc-cta: var(--bgc-cta-header);
+
+        padding: 0.5em 2em;
+        font: {
+            size: 0.625rem;
+        }
+    }
+}
