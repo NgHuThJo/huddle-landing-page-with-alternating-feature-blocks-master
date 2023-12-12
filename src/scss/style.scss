@@ -57,7 +57,71 @@ body {
 }
 
 .main {
+    row-gap: 2rem;
+    padding-top: 4rem;
+}
 
+.footer {
+    text-align: left;
+    color: hsl(var(--c-footer));
+    background-color: hsl(var(--bgc-footer));
+
+    > :where(:not(:first-child)) {
+        margin-top: 3.5rem;
+    }
+
+    &__contact-info {
+        font: {
+            size: 1rem;
+        }
+        
+        > * {
+            @include grid;
+
+            gap: 0.5rem;
+            grid-template-columns: 2rem 1fr;
+            grid-auto-flow: column;
+        }
+
+        > :where(:not(:first-child)) {
+            margin-top: 1.5rem;
+        }
+
+        .location {
+            &::before {
+                content: url("../../images/icon-location.svg");
+            }
+        }
+        
+        .phone {
+            &::before {
+                content: url("../../images/icon-phone.svg");
+            }
+        }
+        
+        .email {
+            &::before {
+                content: url("../../images/icon-email.svg");
+            }
+        }
+    }
+
+    &__navigation {
+        @include grid;
+
+        gap: 1rem;
+    }
+
+    &__social-media {
+        @include flex(column, center, center, 1rem);
+    }
+
+    .copyright {
+        font: {
+            size: 0.6875rem;
+        }
+        text-align: center;
+    }
 }
 
 // Specific rules
@@ -69,13 +133,58 @@ body {
     padding-inline: var(--spacing);
 }
 
+.card {
+    --padding: 3.5rem;
+
+    @include grid;
+
+    gap: 3.5rem;
+    padding-block: var(--padding);
+    box-shadow: 0 0 1rem 0 hsl(var(--c-heading));
+
+    img {
+        padding-inline: var(--padding);
+    }
+
+    &__info {
+        h2 {
+            font: {
+                size: var(--fs-main-heading);
+            }
+        }
+
+        p {
+            padding-inline: 2rem;
+            margin-top: 1em;
+            font: {
+                size: var(--fs-main-text);
+            }
+        }
+    }
+
+    &__bottom {
+        padding: 2.5rem 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0 hsl(var(--c-heading));
+
+        a {
+            padding-inline: 3rem; 
+            margin-top: 2.5em;
+            font: {
+                size: 0.625rem;
+            }
+        }
+    }
+}
+
 .logo {
     &--header {
         width: 6.5rem;
     }
 
     &--footer {
-        // placeholder
+        width: 10rem;
+        filter: invert(100%) sepia(2%) saturate(7%) hue-rotate(323deg) brightness(104%) contrast(102%);
     }
 }
 

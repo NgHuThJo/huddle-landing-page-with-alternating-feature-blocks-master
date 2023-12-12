@@ -1,8 +1,8 @@
-.flex, .flex-col, .flex-group, .flex-grid {
+.footer__social-media, .flex, .flex-col, .flex-group, .flex-grid {
   display: flex;
 }
 
-body > *, .hero, .grid, .macro-grid, .grid-stack, .even-cols, .auto-grid {
+body > *, .footer__contact-info > *, .footer__navigation, .hero, .card, .grid, .macro-grid, .grid-stack, .even-cols, .auto-grid {
   display: grid;
 }
 
@@ -57,6 +57,8 @@ a {
   --fs-body: 1.125rem;
   --fs-header-heading: 1.5rem;
   --fs-header-text: 1rem;
+  --fs-main-heading: 1.25rem;
+  --fs-main-text: 0.875rem;
   --fw-body: 400;
   --fw-heading: 600;
   --fw-cta: 700;
@@ -113,6 +115,10 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+.card {
+  border-radius: 1rem;
 }
 
 .cta {
@@ -2143,15 +2149,95 @@ body > * {
   }
 }
 
+.main {
+  row-gap: 2rem;
+  padding-top: 4rem;
+}
+
+.footer {
+  text-align: left;
+  color: hsl(var(--c-footer));
+  background-color: hsl(var(--bgc-footer));
+}
+.footer > :where(:not(:first-child)) {
+  margin-top: 3.5rem;
+}
+.footer__contact-info {
+  font-size: 1rem;
+}
+.footer__contact-info > * {
+  gap: 0.5rem;
+  grid-template-columns: 2rem 1fr;
+  grid-auto-flow: column;
+}
+.footer__contact-info > :where(:not(:first-child)) {
+  margin-top: 1.5rem;
+}
+.footer__contact-info .location::before {
+  content: url("../../images/icon-location.svg");
+}
+.footer__contact-info .phone::before {
+  content: url("../../images/icon-phone.svg");
+}
+.footer__contact-info .email::before {
+  content: url("../../images/icon-email.svg");
+}
+.footer__navigation {
+  gap: 1rem;
+}
+.footer__social-media {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.footer .copyright {
+  font-size: 0.6875rem;
+  text-align: center;
+}
+
 .hero {
   gap: 3rem;
   padding-top: 5.25rem;
   padding-inline: var(--spacing);
 }
 
+.card {
+  --padding: 3.5rem;
+  gap: 3.5rem;
+  padding-block: var(--padding);
+  box-shadow: 0 0 1rem 0 hsl(var(--c-heading));
+}
+.card img {
+  padding-inline: var(--padding);
+}
+.card__info h2 {
+  font-size: var(--fs-main-heading);
+}
+.card__info p {
+  padding-inline: 2rem;
+  margin-top: 1em;
+  font-size: var(--fs-main-text);
+}
+.card__bottom {
+  padding: 2.5rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem 0 hsl(var(--c-heading));
+}
+.card__bottom a {
+  padding-inline: 3rem;
+  margin-top: 2.5em;
+  font-size: 0.625rem;
+}
+
 .logo--header {
   width: 6.5rem;
 }
+.logo--footer {
+  width: 10rem;
+  filter: invert(100%) sepia(2%) saturate(7%) hue-rotate(323deg) brightness(104%) contrast(102%);
+}
+
 .cta {
   --_c-cta: var(--c-cta);
   --_bgc-cta: var(--bgc-cta);
