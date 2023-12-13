@@ -51,7 +51,7 @@ $body-link-color: null;
 $body-link-color-hover: null;
 
 // Headings
-$heading-font-family: null;
+$heading-font-family: var(--ff-heading);
 $heading-font-weight: var(--fw-heading);
 $heading-line-height: null;
 $heading-text-transform: null;

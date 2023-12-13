@@ -2,7 +2,7 @@
   display: flex;
 }
 
-body > *, .footer__contact-info > *, .footer__navigation, .hero, .card, .grid, .macro-grid, .grid-stack, .even-cols, .auto-grid {
+body > :not(script), .footer__contact-info > *, .footer__navigation, .hero, .card, .grid, .macro-grid, .grid-stack, .even-cols, .auto-grid {
   display: grid;
 }
 
@@ -38,6 +38,7 @@ a {
 .h2,
 .h3,
 .h4 {
+  font-family: var(--ff-heading);
   font-weight: var(--fw-heading);
   color: hsl(var(--c-heading));
 }
@@ -47,6 +48,8 @@ a {
   --c-heading: 192 100% 9%;
   --c-footer: 193 100% 96%;
   --c-cta: 0 0% 100%;
+  --c-outline: 322 100% 66%;
+  --c-social-media-icon: 0 0% 100%;
   --bgc-body: 0 0% 100%;
   --bgc-header: 193 100% 96%;
   --bgc-footer: 192 100% 9%;
@@ -71,7 +74,6 @@ a {
   margin: 0;
   padding: 0;
   font: inherit;
-  line-height: inherit;
   color: inherit;
 }
 
@@ -2115,11 +2117,24 @@ h6 {
 }
 
 body {
+  --transition-duration: 0.4s;
   text-align: center;
 }
-body > * {
+body > :not(script) {
   grid-template-columns: subgrid;
   grid-column: full-width;
+}
+
+a {
+  --outline-thickness: 0px;
+  --outline-color: var(--c-body) / 0;
+  outline: var(--outline-thickness) dashed hsl(var(--outline-color));
+  transition: all var(--transition-duration);
+}
+a:hover, a:focus {
+  --outline-thickness: 2px;
+  --outline-color: var(--c-outline);
+  outline-offset: 0.5em;
 }
 
 .h2--header {
@@ -2135,6 +2150,7 @@ body > * {
 .header {
   --spacing: 1.25rem;
   padding-block: var(--spacing) 2rem;
+  color: hsl(var(--c-heading));
   background-color: hsl(var(--bgc-header));
   background-image: url("../../images/bg-hero-mobile.svg");
   background-repeat: no-repeat;
@@ -2155,6 +2171,7 @@ body > * {
 }
 
 .footer {
+  padding-block: 9rem 3rem;
   text-align: left;
   color: hsl(var(--c-footer));
   background-color: hsl(var(--bgc-footer));
@@ -2191,6 +2208,14 @@ body > * {
   align-items: center;
   gap: 1rem;
 }
+.footer__social-media path {
+  fill: hsl(var(--c-social-media-icon));
+  transition: fill var(--transition-duration);
+}
+.footer__social-media a:hover path,
+.footer__social-media a:focus path {
+  fill: hsl(var(--c-outline));
+}
 .footer .copyright {
   font-size: 0.6875rem;
   text-align: center;
@@ -2206,6 +2231,7 @@ body > * {
   --padding: 3.5rem;
   gap: 3.5rem;
   padding-block: var(--padding);
+  background-color: hsl(var(--bgc-body));
   box-shadow: 0 0 1rem 0 hsl(var(--c-heading));
 }
 .card img {
@@ -2222,12 +2248,25 @@ body > * {
 .card__bottom {
   padding: 2.5rem 1rem;
   border-radius: 1rem;
+  position: relative;
+  top: 4rem;
+  background-color: hsl(var(--bgc-body));
   box-shadow: 0 0 1rem 0 hsl(var(--c-heading));
 }
 .card__bottom a {
   padding-inline: 3rem;
   margin-top: 2.5em;
   font-size: 0.625rem;
+}
+@media (min-width: 768px) {
+  .card {
+    grid-auto-flow: column;
+    padding-left: 4rem;
+    text-align: left;
+  }
+  .card img {
+    padding: 0;
+  }
 }
 
 .logo--header {
@@ -2251,4 +2290,7 @@ body > * {
   --bgc-cta: var(--bgc-cta-header);
   padding: 0.5em 2em;
   font-size: 0.625rem;
+}
+.cta:hover, .cta:focus {
+  opacity: 0.5;
 }/*# sourceMappingURL=style.css.map */
